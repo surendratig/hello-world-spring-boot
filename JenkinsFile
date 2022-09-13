@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('git clone') {
+            steps {
+                git url: 'https://github.com/ragsns/hello-world-spring-boot.git', branch: 'master'
+            }
+        }
+         stage('maven test') {
+            steps {
+                 sh "mvn test"
+            }
+        }
+         stage('mvn build') {
+            steps {
+                sh "mvn package"
+            }
+        }
+    }
+}    
